@@ -1,1 +1,2 @@
-nginx/ssl/*
+nginx/ssl/*.key
+nginx/ssl/*.pem
