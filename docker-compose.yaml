@@ -1,0 +1,22 @@
+version: '2'
+services:
+
+  # Nginx webserver
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - php
+
+  # PHP-FPM for compile .php file
+  php:
+    image: php:7.2-fpm-alpine
+    restart: always
+    volumes:
+      - ./public:/var/www/html
